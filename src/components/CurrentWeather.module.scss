@@ -1,0 +1,44 @@
+.currentWeather {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+  color: #ffc01f;
+  padding: 50px 0;
+}
+
+.header {
+  font-size: calc(30px + 3vh);
+  font-weight: normal;
+}
+
+.cityWeather {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.city {
+  margin-right: 5vw;
+  font-size: 72px;
+  color: rgba($color: #ffc01f, $alpha: 0.6);
+}
+
+.weatherIcon {
+  width: 200px;
+}
+
+.fahrenheitDeg {
+  position: relative;
+  font-size: 288px;
+}
+
+.celsiusDeg {
+  position: relative;
+  font-size: 144px;
+}
+
+.degType {
+  font-size: 36px;
+}
