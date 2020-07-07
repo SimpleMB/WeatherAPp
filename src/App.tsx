@@ -1,46 +1,54 @@
 import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
 import WeatherTemplate from './templates/WeatherTemplate';
 import LocationTemplate from './templates/LocationTemplate';
+import { Location } from './store/location/types';
 
-const App: React.FC = () => {
-  interface Coords {
-    lat: string;
-    lon: string;
-  }
+interface Props {
+  location: Location;
+}
 
-  const [location, setLocation] = useState({ lat: '', lon: '' });
+const App: React.FC<Props> = (props) => {
+  // interface Coords {
+  //   lat: string;
+  //   lon: string;
+  // }
 
-  const [weather, setWeather] = useState({});
+  // const fetchWeatherWithCoords = async (coords: Coords) => {
+  //   try {
+  //     const weatherJSON = await fetch(
+  //       `https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&exclude=minutely,hourly&appid=f70a003f4e16b43209f8ecedfcb9f427`
+  //     );
+  //     const weatherData: object = await weatherJSON.json();
+  //     setWeather(weatherData);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
-  const fetchWeatherWithCoords = async (coords: Coords) => {
-    try {
-      const weatherJSON = await fetch(
-        `https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&exclude=minutely,hourly&appid=f70a003f4e16b43209f8ecedfcb9f427`
-      );
-      const weatherData: object = await weatherJSON.json();
-      setWeather(weatherData);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // useEffect(() => {
+  //   if (localStorage.location) {
+  //     setLocation(localStorage.location);
+  //   } else {
+  //     // for development only
+  //     setLocation({ lat: '33.44', lon: '-94.04' });
+  //   }
+  // }, []);
 
-  useEffect(() => {
-    if (localStorage.location) {
-      setLocation(localStorage.location);
-    } else {
-      setLocation({ lat: '33.44', lon: '-94.04' });
-    }
-  }, []);
+  // useEffect(() => {
+  //   location.lat && fetchWeatherWithCoords(location);
+  // }, [location]);
 
-  useEffect(() => {
-    location.lat && fetchWeatherWithCoords(location);
-  }, [location]);
-
-  return location.lat !== '' ? (
-    <WeatherTemplate weather={weather} />
-  ) : (
-    <LocationTemplate loc={setLocation} randomWeather={weather} />
-  );
+  return props.location.lat !== 0 ? <WeatherTemplate /> : <LocationTemplate />;
 };
 
-export default App;
+interface RootState {
+  location: Location;
+  weather?: object;
+}
+
+const mapStateToProps = (state: RootState) => ({
+  location: state.location,
+});
+
+export default connect(mapStateToProps, {})(App);

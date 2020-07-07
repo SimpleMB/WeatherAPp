@@ -1,9 +1,7 @@
-import React, { Dispatch } from 'react';
+import React from 'react';
 import style from './ChooseLocation.module.scss';
 
-interface LocationTemplateProps {
-  loc: Dispatch<{ lat: string; lon: string }>;
-}
+interface LocationTemplateProps {}
 
 const ChooseLocation: React.FC<LocationTemplateProps> = (props) => {
   return (

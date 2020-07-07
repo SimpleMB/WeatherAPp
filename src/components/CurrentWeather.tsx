@@ -2,11 +2,8 @@ import React from 'react';
 import style from './CurrentWeather.module.scss';
 import weatherIcon from '../assets/800.svg';
 
-interface CurrentWeatherProps {
-  weather: {};
-}
+interface CurrentWeatherProps {}
 const CurrentWeather: React.FC<CurrentWeatherProps> = (props) => {
-  console.log(props.weather);
   return (
     <div className={style.currentWeather}>
       <h2 className={style.header}>Current</h2>
