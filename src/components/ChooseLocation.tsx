@@ -10,7 +10,6 @@ interface LocationTemplateProps {
 
 const ChooseLocation: React.FC<LocationTemplateProps> = (props) => {
   const changeLocation = () => {
-    console.log('works');
     props.setLocation({
       lat: 51.507351,
       lon: -0.127758,
