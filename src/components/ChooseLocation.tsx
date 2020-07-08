@@ -1,9 +1,23 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { setLocation } from '../store/location/actions';
+import { Location } from '../store/location/types';
 import style from './ChooseLocation.module.scss';
 
-interface LocationTemplateProps {}
+interface LocationTemplateProps {
+  setLocation: (location: Location) => void;
+}
 
 const ChooseLocation: React.FC<LocationTemplateProps> = (props) => {
+  const changeLocation = () => {
+    console.log('works');
+    props.setLocation({
+      lat: 51.507351,
+      lon: -0.127758,
+      city: 'London',
+    });
+  };
+
   return (
     <div className={style.chooseLocation}>
       <h1 className={style.title}>
@@ -21,10 +35,11 @@ const ChooseLocation: React.FC<LocationTemplateProps> = (props) => {
           className={style.inputLocation}
           type="text"
           placeholder="hurry up..."
+          onFocus={changeLocation}
         />
       </div>
     </div>
   );
 };
 
-export default ChooseLocation;
+export default connect(null, { setLocation })(ChooseLocation);

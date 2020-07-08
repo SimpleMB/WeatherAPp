@@ -3,6 +3,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 
 import locationReducer from './location/reducers';
+// import weatherReducer from './weather/reducers';
 
 const combinedReducers = combineReducers({ location: locationReducer });
 
