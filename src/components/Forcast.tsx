@@ -1,13 +1,18 @@
 import React from 'react';
-import style from './Forcast.module.scss';
+import { connect } from 'react-redux';
 import ForcastDay from './ForcastDay';
+import { RootState } from '../store';
+import { Weather } from '../store/weather/types';
+import style from './Forcast.module.scss';
 
-interface ForcastProps {}
+interface Props {
+  weather: Weather;
+}
 
-const Forcast: React.FC<ForcastProps> = (props) => {
-  // const forcastDayList = props.weather.daily.map((day) => (
-  //   <ForcastDay key={day.dt} day={day} />
-  // ));
+const Forcast: React.FC<Props> = (props) => {
+  const forcastDayList = props.weather.daily.map((day, index) => (
+    <ForcastDay key={day.dt} day={day} index={index} />
+  ));
   return (
     <div className={style.forcast}>
       <h2 className={style.header}>Forcast</h2>
@@ -18,4 +23,8 @@ const Forcast: React.FC<ForcastProps> = (props) => {
   );
 };
 
-export default Forcast;
+const mapStateToProps = (state: RootState) => ({
+  weather: state.weather,
+});
+
+export default connect(mapStateToProps)(Forcast);

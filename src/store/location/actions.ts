@@ -10,6 +10,7 @@ import {
 export const setLocation = (location: Location) => (
   dispatch: Dispatch<SetLocationAction>
 ) => {
+  console.log('hello from setLocation');
   dispatch({
     type: SET_LOCATION,
     payload: location,

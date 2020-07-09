@@ -3,16 +3,25 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 
 import locationReducer from './location/reducers';
-// import weatherReducer from './weather/reducers';
+import weatherReducer from './weather/reducers';
+import { Location } from './location/types';
+import { Weather } from './weather/types';
 
-const combinedReducers = combineReducers({ location: locationReducer });
+export interface RootState {
+  location: Location;
+  weather: Weather;
+}
+const rootReducer = combineReducers({
+  location: locationReducer,
+  weather: weatherReducer,
+});
 
 const initialState = {};
 
 const middleware = [thunk];
 
 const store = createStore(
-  combinedReducers,
+  rootReducer,
   initialState,
   composeWithDevTools(applyMiddleware(...middleware))
 );

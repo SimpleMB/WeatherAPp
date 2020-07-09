@@ -14,9 +14,10 @@ interface Temp {
   night: number;
 }
 
-interface WeatherPrecise {
+export interface WeatherPrecise {
+  dt: number;
   temp: Temp;
-  weather: WeatherShort;
+  weather: WeatherShort[];
 }
 
 interface CurrentWeather {
@@ -36,7 +37,7 @@ export interface Coords {
 
 export interface GetWeatherAction {
   type: typeof GET_WEATHER;
-  payload: Coords;
+  payload: Weather;
 }
 
 export type WeatherActionsType = GetWeatherAction;
