@@ -14,13 +14,13 @@ const ForcastDay: React.FC<ForcastDayProps> = (props) => {
   const { id, main, description, icon } = weather[0];
 
   const weekdays = [
+    'Sunday',
     'Monday',
     'Tuesday',
     'Wednesday',
     'Thursday',
     'Friday',
     'Saturday',
-    'Sunday',
   ];
   const forcastDay = new Date(dt * 1000).getDay();
   const forcastWeekday = weekdays[forcastDay];
@@ -30,7 +30,7 @@ const ForcastDay: React.FC<ForcastDayProps> = (props) => {
 
   const forcastDayName = forcastDay === currentDay ? 'Today' : forcastWeekday;
 
-  return <div>hello</div>;
+  return <li>{forcastDayName}</li>;
 };
 
 export default ForcastDay;

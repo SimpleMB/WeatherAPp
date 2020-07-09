@@ -16,9 +16,7 @@ const Forcast: React.FC<Props> = (props) => {
   return (
     <div className={style.forcast}>
       <h2 className={style.header}>Forcast</h2>
-      <ul className={style.forcastUL}>
-        <li>dfd</li>
-      </ul>
+      <ul className={style.forcastUL}>{forcastDayList}</ul>
     </div>
   );
 };
