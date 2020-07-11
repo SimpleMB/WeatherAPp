@@ -17,6 +17,8 @@ interface Temp {
 export interface WeatherPrecise {
   dt: number;
   temp: Temp;
+  humidity: number;
+  wind_speed: number;
   weather: WeatherShort[];
 }
 
@@ -26,6 +28,7 @@ interface CurrentWeather {
 }
 
 export interface Weather {
+  timezone_offset: number;
   current: CurrentWeather;
   daily: WeatherPrecise[];
 }

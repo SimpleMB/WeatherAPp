@@ -1,6 +1,7 @@
 import { Weather, WeatherActionsType, GET_WEATHER } from './types';
 
 const initialState: Weather = {
+  timezone_offset: 0,
   current: {
     temp: 296.66,
     weather: [
@@ -21,6 +22,8 @@ const initialState: Weather = {
         max: 304.09,
         night: 295.71,
       },
+      humidity: 76,
+      wind_speed: 3.8,
       weather: [
         {
           id: 502,

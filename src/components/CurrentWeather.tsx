@@ -6,6 +6,7 @@ import { Weather, Coords } from '../store/weather/types';
 import { getWeather } from '../store/weather/actions';
 import { Location } from '../store/location/types';
 import { RootState } from '../store';
+import { kelvinToFahrenheit, kelvinToCelsius } from '../utils/tempConverter';
 
 interface Props {
   weather: Weather;
@@ -24,8 +25,8 @@ const CurrentWeather: React.FC<Props> = (props) => {
     current: { temp },
   } = weather;
 
-  const fTemp = `${Math.floor(1.8 * (temp - 273) + 32)}º`;
-  const cTemp = `${Math.floor(temp - 273.15)}º`;
+  const fTemp = kelvinToFahrenheit(temp);
+  const cTemp = kelvinToCelsius(temp);
 
   return (
     <div className={style.currentWeather}>

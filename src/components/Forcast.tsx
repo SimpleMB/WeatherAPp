@@ -10,8 +10,12 @@ interface Props {
 }
 
 const Forcast: React.FC<Props> = (props) => {
-  const forcastDayList = props.weather.daily.map((day, index) => (
-    <ForcastDay key={day.dt} day={day} index={index} />
+  const { timezone_offset: timezoneOffset, daily } = props.weather;
+
+  const forcastDayList = daily.map((day, index) => (
+    <li key={day.dt}>
+      <ForcastDay day={day} index={index} timezoneOffset={timezoneOffset} />
+    </li>
   ));
   return (
     <div className={style.forcast}>
