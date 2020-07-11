@@ -1,0 +1,37 @@
+.forcastHeader {
+  font-size: 48px;
+  color: rgba($color: white, $alpha: 0.6);
+}
+
+.forcastDayFlex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.weatherDesc {
+  font-size: 24px;
+  font-weight: normal;
+  margin-bottom: 20px;
+}
+
+.weatherList {
+  list-style: none;
+  width: 250px;
+  li {
+    display: flex;
+    justify-content: space-between;
+    line-height: 2rem;
+    font-weight: bold;
+    font-size: 18px;
+
+    span {
+      font-weight: normal;
+    }
+  }
+}
+
+.weatherIcon {
+  width: 200px;
+}

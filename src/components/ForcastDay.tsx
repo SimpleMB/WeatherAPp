@@ -1,7 +1,8 @@
 import React from 'react';
 import { WeatherPrecise } from '../store/weather/types';
-import weatherIcon from '../assets/312.svg';
+import weatherIcon from '../assets/900.svg';
 import { kelvinToFahrenheit, kelvinToCelsius } from '../utils/tempConverter';
+import style from './ForcastDay.module.scss';
 
 interface ForcastDayProps {
   day: WeatherPrecise;
@@ -44,18 +45,28 @@ const ForcastDay: React.FC<ForcastDayProps> = (props) => {
 
   return (
     <div>
-      <h3>{forcastDayName}</h3>
-      <div>
+      <h3 className={style.forcastHeader}>{forcastDayName}</h3>
+      <div className={style.forcastDayFlex}>
         <div>
-          <h4>{description[0].toUpperCase() + description.substring(1)}</h4>
-          <ul>
-            <li>Day: {tempDay}</li>
-            <li>Night: {tempNight}</li>
-            <li>Humidity: {humidity}%</li>
-            <li>Wind: {windSpeed} m/s</li>
+          <h4 className={style.weatherDesc}>
+            {description[0].toUpperCase() + description.substring(1)}
+          </h4>
+          <ul className={style.weatherList}>
+            <li>
+              Day: <span>{tempDay}</span>
+            </li>
+            <li>
+              Night: <span>{tempNight}</span>
+            </li>
+            <li>
+              Humidity: <span>{humidity}%</span>
+            </li>
+            <li>
+              Wind: <span>{windSpeed}m/s</span>
+            </li>
           </ul>
         </div>
-        <img src={weatherIcon} alt="" />
+        <img className={style.weatherIcon} src={weatherIcon} alt="" />
       </div>
     </div>
   );
