@@ -15,7 +15,13 @@ interface Props {
   getWeather: (coords: Coords) => void;
 }
 const CurrentWeather: React.FC<Props> = (props) => {
-  const { weather, location, getWeather: getWeatherAction } = props;
+  const {
+    weather: {
+      current: { temp },
+    },
+    location,
+    getWeather: getWeatherAction,
+  } = props;
 
   const [city, setCity] = useState('New York');
 
@@ -27,12 +33,7 @@ const CurrentWeather: React.FC<Props> = (props) => {
     } else {
       getWeatherAction(location);
     }
-    // eslint-disable-next-line
-  }, []);
-
-  const {
-    current: { temp },
-  } = weather;
+  }, [location, getWeatherAction]);
 
   const fTemp = kelvinToFahrenheit(temp);
   const cTemp = kelvinToCelsius(temp);
