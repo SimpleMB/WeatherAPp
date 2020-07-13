@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import style from './CurrentWeather.module.scss';
 import weatherIcon from '../assets/800.svg';
@@ -7,7 +7,7 @@ import { getWeather } from '../store/weather/actions';
 import { Location } from '../store/location/types';
 import { RootState } from '../store';
 import { kelvinToFahrenheit, kelvinToCelsius } from '../utils/tempConverter';
-import { randomCities } from '../mocks/randomCities';
+import { rngLocation } from '../utils/randomCities';
 
 interface Props {
   weather: Weather;
@@ -16,9 +16,17 @@ interface Props {
 }
 const CurrentWeather: React.FC<Props> = (props) => {
   const { weather, location, getWeather: getWeatherAction } = props;
+
+  const [city, setCity] = useState('New York');
+
   useEffect(() => {
-    if (location.lat === 0) return;
-    getWeatherAction(location);
+    if (location.lat === 0) {
+      const randomCoords = rngLocation();
+      getWeatherAction(randomCoords);
+      setCity(randomCoords.city);
+    } else {
+      getWeatherAction(location);
+    }
     // eslint-disable-next-line
   }, []);
 
@@ -33,7 +41,7 @@ const CurrentWeather: React.FC<Props> = (props) => {
     <div className={style.currentWeather}>
       <h2 className={style.header}>Current</h2>
       <div className={style.cityWeather}>
-        <h3 className={style.city}>{location.city || 'New York'}</h3>
+        <h3 className={style.city}>{location.city || city}</h3>
         <img
           className={style.weatherIcon}
           src={weatherIcon}

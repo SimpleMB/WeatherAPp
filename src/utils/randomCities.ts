@@ -1,6 +1,6 @@
 import { Location } from '../store/location/types';
 
-export const randomCities: Location[] = [
+const randomCities: Location[] = [
   {
     lat: 52.23,
     lon: 21.01,
@@ -52,3 +52,8 @@ export const randomCities: Location[] = [
     city: 'Beijing',
   },
 ];
+
+export const rngLocation = () => {
+  const rngIndex = Math.floor(Math.random() * randomCities.length);
+  return randomCities[rngIndex];
+};
