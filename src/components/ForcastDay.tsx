@@ -1,6 +1,5 @@
 import React from 'react';
 import { WeatherPrecise } from '../store/weather/types';
-import weatherIcon from '../assets/900.svg';
 import { kelvinToFahrenheit, kelvinToCelsius } from '../utils/tempConverter';
 import style from './ForcastDay.module.scss';
 
@@ -43,6 +42,9 @@ const ForcastDay: React.FC<ForcastDayProps> = (props) => {
     temp.night
   )}C`;
 
+  // eslint-disable-next-line
+  const dynamicIcon = require(`../assets/${id}.svg`);
+
   return (
     <div>
       <h3 className={style.forcastHeader}>{forcastDayName}</h3>
@@ -66,10 +68,12 @@ const ForcastDay: React.FC<ForcastDayProps> = (props) => {
             </li>
           </ul>
         </div>
-        <img className={style.weatherIcon} src={weatherIcon} alt="" />
+        <img className={style.weatherIcon} src={String(dynamicIcon)} alt="" />
       </div>
     </div>
   );
 };
+
+// TODO: Proper weather icon display
 
 export default ForcastDay;
