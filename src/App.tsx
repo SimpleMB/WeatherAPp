@@ -19,10 +19,6 @@ const App: React.FC<Props> = (props) => {
   return props.location.lat === 0 ? <LocationTemplate /> : <WeatherTemplate />;
 };
 
-// interface RootState {
-//   location: Location;
-// }
-
 const mapStateToProps = (state: RootState) => ({
   location: state.location,
 });

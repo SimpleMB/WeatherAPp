@@ -15,28 +15,29 @@
 
 .cityWeather {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
 }
 
 .city {
-  margin-right: 5vw;
-  font-size: 72px;
+  font-size: calc(30px + 3vh);
   color: rgba($color: #ffc01f, $alpha: 0.6);
+  max-width: 50%;
 }
 
 .weatherIcon {
-  width: 200px;
+  width: calc(30px + 25vh);
+  filter: invert(0.4) sepia(1) saturate(3.1) hue-rotate(3.6deg) brightness(1.04);
 }
 
 .fahrenheitDeg {
   position: relative;
-  font-size: 288px;
+  font-size: calc(30px + 20vh);
 }
 
 .celsiusDeg {
   position: relative;
-  font-size: 144px;
+  font-size: calc(30px + 10vh);
 }
 
 .degType {

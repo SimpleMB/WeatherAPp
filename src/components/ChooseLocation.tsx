@@ -1,6 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
+import GooglePlacesAutocomplete, {
+  geocodeByPlaceId,
+  getLatLng,
+} from 'react-google-places-autocomplete';
 import { setLocation } from '../store/location/actions';
 import { Location } from '../store/location/types';
 import style from './ChooseLocation.module.scss';
@@ -10,13 +13,30 @@ interface LocationTemplateProps {
 }
 
 const ChooseLocation: React.FC<LocationTemplateProps> = (props) => {
-  const changeLocation = () => {
-    console.log();
+  type Result = {
+    place_id: string;
+    description: string;
+  };
+  const changeLocation = async (result: Result) => {
+    const location = await geocodeByPlaceId(result.place_id);
+    const { lat, lng } = await getLatLng(location[0]);
+    // const {long} = location[0].address_components[1]
+    console.log(location);
     props.setLocation({
-      lat: 51.507351,
-      lon: -0.127758,
-      city: 'London',
+      lat,
+      lon: lng,
+      city: result.description,
     });
+  };
+
+  const suggestionsClassNames = {
+    container: style.GPAcontainer,
+    suggestion: style.GPAsuggestion,
+    suggestionActive: style.GPAactive,
+  };
+
+  const autocompletionRequest = {
+    types: ['(cities)'] as ['(cities)'],
   };
 
   return (
@@ -31,17 +51,12 @@ const ChooseLocation: React.FC<LocationTemplateProps> = (props) => {
           send <span className={style.labelHeart}>❤</span> and 🌤 to this
           location:
         </label>
-        {/* <input
-          id="input-location"
-          className={style.inputLocation}
-          type="text"
-          placeholder="hurry up..."
-          onFocus={changeLocation}
-        /> */}
         <GooglePlacesAutocomplete
           inputClassName={style.inputLocation}
           apiKey={process.env.REACT_APP_GOOGLE_PLACES_API_KEY}
           onSelect={changeLocation}
+          suggestionsClassNames={suggestionsClassNames}
+          autocompletionRequest={autocompletionRequest}
         />
       </div>
     </div>

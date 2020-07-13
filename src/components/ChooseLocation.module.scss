@@ -42,3 +42,22 @@
     box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.7);
   }
 }
+
+.GPAcontainer {
+  border-radius: 20px;
+  background-color: white;
+}
+
+.GPAsuggestion {
+  background-color: white;
+  color: gray;
+  border-radius: 20px;
+  padding: 10px;
+  &:hover {
+    cursor: pointer;
+    background-color: rgba($color: black, $alpha: 0.1);
+  }
+}
+
+.GPAactive {
+}
