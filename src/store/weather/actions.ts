@@ -1,11 +1,19 @@
 import { Action } from 'redux';
-import { ThunkAction } from 'redux-thunk';
-import { Coords, GET_WEATHER } from './types';
+import { ThunkAction, ThunkDispatch } from 'redux-thunk';
+import { Coords, GET_WEATHER, LOADING } from './types';
+
+const setLoading = (dispatch: ThunkDispatch<{}, unknown, Action<string>>) => {
+  dispatch({
+    type: LOADING,
+    payload: true,
+  });
+};
 
 export const getWeather = (
   coords: Coords
 ): ThunkAction<void, {}, unknown, Action<string>> => async (dispatch) => {
   if (coords.lat === 0) return;
+  setLoading(dispatch);
   const { lat, lon } = coords;
   try {
     const weatherJSON = await fetch(

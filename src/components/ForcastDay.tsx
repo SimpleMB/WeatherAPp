@@ -15,7 +15,7 @@ const ForcastDay: React.FC<ForcastDayProps> = (props) => {
     index,
     timezoneOffset,
   } = props;
-  const { id, main, description, icon } = weather[0];
+  const { id, description } = weather[0];
 
   const weekdays = [
     'Sunday',
@@ -73,7 +73,5 @@ const ForcastDay: React.FC<ForcastDayProps> = (props) => {
     </div>
   );
 };
-
-// TODO: Proper weather icon display
 
 export default ForcastDay;

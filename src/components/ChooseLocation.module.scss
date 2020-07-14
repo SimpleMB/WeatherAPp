@@ -1,8 +1,4 @@
 .chooseLocation {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
   width: 50%;
   background-color: #ffc01f;
   text-align: center;
@@ -13,6 +9,7 @@
 .title {
   font-size: 72px;
   font-weight: normal;
+  margin-bottom: 100px;
 }
 
 .titleSpan {
@@ -53,11 +50,9 @@
   color: gray;
   border-radius: 20px;
   padding: 10px;
+
   &:hover {
     cursor: pointer;
     background-color: rgba($color: black, $alpha: 0.1);
   }
-}
-
-.GPAactive {
 }

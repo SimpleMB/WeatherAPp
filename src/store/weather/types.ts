@@ -1,4 +1,5 @@
 export const GET_WEATHER = 'GET_WEATHER';
+export const LOADING = 'LOADING';
 
 interface WeatherShort {
   id: number;
@@ -28,6 +29,7 @@ interface CurrentWeather {
 }
 
 export interface Weather {
+  loading: boolean;
   timezone_offset: number;
   current: CurrentWeather;
   daily: WeatherPrecise[];
@@ -43,4 +45,9 @@ export interface GetWeatherAction {
   payload: Weather;
 }
 
-export type WeatherActionsType = GetWeatherAction;
+export interface SetLoadingAction {
+  type: typeof LOADING;
+  payload: boolean;
+}
+
+export type WeatherActionsType = GetWeatherAction | SetLoadingAction;
