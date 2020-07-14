@@ -37,7 +37,7 @@ const CurrentWeather: React.FC<Props> = (props) => {
     }
   }, [location, getWeatherAction]);
 
-  const fTemp = kelvinToFahrenheit(temp);
+  const fTemp = kelvinToFahrenheit(temdp);
   const cTemp = kelvinToCelsius(temp);
 
   if (loading) return <Loader />;
