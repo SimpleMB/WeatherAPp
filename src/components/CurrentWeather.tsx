@@ -8,6 +8,7 @@ import { Location } from '../store/location/types';
 import { RootState } from '../store';
 import { kelvinToFahrenheit, kelvinToCelsius } from '../utils/tempConverter';
 import { rngLocation } from '../utils/randomCities';
+import Loader from './Loader';
 
 interface Props {
   weather: Weather;
@@ -18,6 +19,7 @@ const CurrentWeather: React.FC<Props> = (props) => {
   const {
     weather: {
       current: { temp },
+      loading,
     },
     location,
     getWeather: getWeatherAction,
@@ -38,6 +40,7 @@ const CurrentWeather: React.FC<Props> = (props) => {
   const fTemp = kelvinToFahrenheit(temp);
   const cTemp = kelvinToCelsius(temp);
 
+  if (loading) return <Loader />;
   return (
     <div className={style.currentWeather}>
       <h2 className={style.header}>Current</h2>
