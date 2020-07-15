@@ -1,4 +1,9 @@
 .locationTemplate {
   display: flex;
   height: 100vh;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    height: unset;
+  }
 }

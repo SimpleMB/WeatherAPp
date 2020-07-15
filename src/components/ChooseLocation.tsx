@@ -55,6 +55,7 @@ const ChooseLocation: React.FC<LocationTemplateProps> = (props) => {
           onSelect={changeLocation}
           suggestionsClassNames={suggestionsClassNames}
           autocompletionRequest={autocompletionRequest}
+          loader={<div />}
         />
       </div>
     </div>

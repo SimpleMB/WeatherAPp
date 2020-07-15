@@ -18,12 +18,16 @@ interface Props {
 const CurrentWeather: React.FC<Props> = (props) => {
   const {
     weather: {
-      current: { temp },
+      current: { temp, weather },
       loading,
     },
     location,
     getWeather: getWeatherAction,
   } = props;
+
+  const currentWeatherIconId = weather[0].id;
+  // eslint-disable-next-line
+  const currentWeatherIcon = require(`../assets/${currentWeatherIconId}.svg`);
 
   const [city, setCity] = useState('New York');
 
@@ -43,12 +47,11 @@ const CurrentWeather: React.FC<Props> = (props) => {
   if (loading) return <Loader />;
   return (
     <div className={style.currentWeather}>
-      <h2 className={style.header}>Current</h2>
       <div className={style.cityWeather}>
         <h3 className={style.city}>{location.city || city}</h3>
         <img
           className={style.weatherIcon}
-          src={weatherIcon}
+          src={currentWeatherIcon}
           alt="current weather icon"
         />
       </div>
