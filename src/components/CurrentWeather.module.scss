@@ -6,8 +6,9 @@
   width: 50%;
   color: #ffc01f;
   padding: 50px 0;
+  min-height: 100vh;
 
-  @media (max-width: 600px) {
+  @media (max-width: 820px) {
     width: 100%;
   }
 }
@@ -21,12 +22,21 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+
+  @media (max-width: 820px) {
+    flex-direction: column;
+    justify-content: center;
+  }
 }
 
 .city {
   font-size: calc(30px + 3vh);
   color: rgba($color: #ffc01f, $alpha: 0.6);
   max-width: 50%;
+
+  @media (max-width: 820px) {
+    font-size: calc(30px + 3vw);
+  }
 }
 
 .weatherIcon {
@@ -35,13 +45,19 @@
 }
 
 .fahrenheitDeg {
-  position: relative;
   font-size: calc(30px + 20vh);
+
+  @media (max-width: 820px) {
+    font-size: calc(30px + 20vw);
+  }
 }
 
 .celsiusDeg {
-  position: relative;
   font-size: calc(30px + 10vh);
+
+  @media (max-width: 820px) {
+    font-size: calc(30px + 20vw);
+  }
 }
 
 .degType {

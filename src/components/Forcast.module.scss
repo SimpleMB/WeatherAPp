@@ -3,6 +3,10 @@
   width: 50%;
   color: white;
   overflow-y: scroll;
+
+  @media (max-width: 820px) {
+    width: 100vw;
+  }
 }
 
 .header {
@@ -17,4 +21,9 @@
   max-width: 50%;
   min-width: 500px;
   margin: 0 auto;
+
+  @media (max-width: 820px) {
+    max-width: unset;
+    min-width: unset;
+  }
 }

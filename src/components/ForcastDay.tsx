@@ -46,7 +46,7 @@ const ForcastDay: React.FC<ForcastDayProps> = (props) => {
   const dynamicIcon = require(`../assets/${id}.svg`);
 
   return (
-    <div>
+    <div className={style.forcastDayWrapper}>
       <h3 className={style.forcastHeader}>{forcastDayName}</h3>
       <div className={style.forcastDayFlex}>
         <div>
@@ -68,7 +68,11 @@ const ForcastDay: React.FC<ForcastDayProps> = (props) => {
             </li>
           </ul>
         </div>
-        <img className={style.weatherIcon} src={String(dynamicIcon)} alt="" />
+        <img
+          className={style.weatherIcon}
+          src={String(dynamicIcon)}
+          alt="weather icon"
+        />
       </div>
     </div>
   );
