@@ -13,8 +13,10 @@ interface Props {
 
 const App: React.FC<Props> = (props) => {
   useEffect(() => {
-    if (localStorage.location) props.setLocation(localStorage.location);
-  }, [props]);
+    if (localStorage.location)
+      props.setLocation(JSON.parse(localStorage.location));
+    // eslint-disable-next-line
+  }, []);
 
   return props.location.lat === 0 ? <LocationTemplate /> : <WeatherTemplate />;
 };

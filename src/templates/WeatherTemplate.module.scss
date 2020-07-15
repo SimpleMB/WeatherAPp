@@ -1,9 +1,3 @@
 .weatherTemplate {
-  display: flex;
-  height: 100vh;
-
-  @media (max-width: 1025px) {
-    flex-direction: column;
-    height: unset;
-  }
+  composes: locationTemplate from './LocationTemplate.module.scss';
 }

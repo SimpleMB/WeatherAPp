@@ -9,6 +9,8 @@ const initialState: Location = {
 export default (state = initialState, action: LocationActionsType) => {
   switch (action.type) {
     case SET_LOCATION:
+      // TODO: set local storage
+      localStorage.setItem('location', JSON.stringify(action.payload));
       return action.payload;
 
     default:
