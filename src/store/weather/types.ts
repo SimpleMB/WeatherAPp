@@ -1,5 +1,7 @@
 export const GET_WEATHER = 'GET_WEATHER';
 export const LOADING = 'LOADING';
+export const SET_WEATHER_ERROR = 'SET_ERROR';
+export const CLEAR_WEATHER_ERROR = 'CLEAR_ERROR';
 
 interface WeatherShort {
   id: number;
@@ -30,6 +32,7 @@ interface CurrentWeather {
 
 export interface Weather {
   loading: boolean;
+  error: string;
   timezone_offset: number;
   current: CurrentWeather;
   daily: WeatherPrecise[];
@@ -50,4 +53,17 @@ export interface SetLoadingAction {
   payload: boolean;
 }
 
-export type WeatherActionsType = GetWeatherAction | SetLoadingAction;
+interface SetErrorAction {
+  type: typeof SET_WEATHER_ERROR;
+  payload: string;
+}
+
+interface ClearErrorAction {
+  type: typeof CLEAR_WEATHER_ERROR;
+}
+
+export type WeatherActionsType =
+  | GetWeatherAction
+  | SetLoadingAction
+  | SetErrorAction
+  | ClearErrorAction;

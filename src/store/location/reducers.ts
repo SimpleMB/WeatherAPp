@@ -3,12 +3,15 @@ import {
   Location,
   SET_LOCATION,
   CLEAR_LOCATION,
+  SET_LOCATION_ERROR,
+  CLEAR_LOCATION_ERROR,
 } from './types';
 
 const initialState: Location = {
   lat: 0,
   lon: 0,
   city: '',
+  error: '',
 };
 
 export default (state = initialState, action: LocationActionsType) => {
@@ -16,9 +19,23 @@ export default (state = initialState, action: LocationActionsType) => {
     case SET_LOCATION:
       localStorage.setItem('location', JSON.stringify(action.payload));
       return action.payload;
+
     case CLEAR_LOCATION:
       localStorage.removeItem('location');
       return initialState;
+
+    case SET_LOCATION_ERROR:
+      return {
+        ...state,
+        error: action.payload,
+      };
+
+    case CLEAR_LOCATION_ERROR:
+      return {
+        ...state,
+        error: '',
+      };
+
     default:
       return state;
   }

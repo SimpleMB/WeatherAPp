@@ -1,8 +1,9 @@
 import React from 'react';
 import CurrentWeather from '../components/CurrentWeather';
 import Forcast from '../components/Forcast';
-import style from './WeatherTemplate.module.scss';
 import ChangeLocationButton from '../components/ChangeLocationButton';
+import Alert from '../components/Alert';
+import style from './WeatherTemplate.module.scss';
 
 interface WeatherTemplateProps {}
 const WeatherTemplate: React.FC<WeatherTemplateProps> = (props) => {
@@ -11,6 +12,7 @@ const WeatherTemplate: React.FC<WeatherTemplateProps> = (props) => {
       <CurrentWeather />
       <Forcast />
       <ChangeLocationButton />
+      <Alert />
     </div>
   );
 };

@@ -1,7 +1,15 @@
-import { Weather, WeatherActionsType, GET_WEATHER, LOADING } from './types';
+import {
+  Weather,
+  WeatherActionsType,
+  GET_WEATHER,
+  LOADING,
+  SET_WEATHER_ERROR,
+  CLEAR_WEATHER_ERROR,
+} from './types';
 
 const initialState: Weather = {
   loading: true,
+  error: '',
   timezone_offset: 0,
   current: {
     temp: 296.66,
@@ -43,12 +51,26 @@ export default (state = initialState, action: WeatherActionsType) => {
       return {
         ...action.payload,
         loading: false,
+        error: '',
       };
 
     case LOADING:
       return {
         ...state,
         loading: true,
+      };
+
+    case SET_WEATHER_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+
+    case CLEAR_WEATHER_ERROR:
+      return {
+        ...state,
+        error: '',
       };
 
     default:

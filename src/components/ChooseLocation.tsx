@@ -24,6 +24,7 @@ const ChooseLocation: React.FC<LocationTemplateProps> = (props) => {
       lat,
       lon: lng,
       city: result.description,
+      error: '',
     });
   };
 

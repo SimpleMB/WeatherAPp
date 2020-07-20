@@ -1,0 +1,27 @@
+.alertWrapperActive {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+  width: 100%;
+  background-color: red;
+  transition: opacity 0.3s linear;
+}
+
+.alertWrapper {
+  composes: alertWrapperActive;
+  opacity: 0;
+}
+
+.error {
+  color: white;
+  font-size: 25px;
+  font-weight: 700;
+
+  @media (max-width: 425px) {
+    font-size: 18px;
+  }
+}
