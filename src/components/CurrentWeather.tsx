@@ -5,9 +5,9 @@ import { Weather, Coords } from '../store/weather/types';
 import { getWeather } from '../store/weather/actions';
 import { Location } from '../store/location/types';
 import { RootState } from '../store';
-import { kelvinToFahrenheit, kelvinToCelsius } from '../utils/tempConverter';
 import { rngLocation } from '../utils/randomCities';
 import Loader from './Loader';
+import Temperature from './Temperature';
 
 interface Props {
   weather: Weather;
@@ -40,9 +40,6 @@ const CurrentWeather: React.FC<Props> = (props) => {
     }
   }, [location, getWeatherAction]);
 
-  const fTemp = kelvinToFahrenheit(temp);
-  const cTemp = kelvinToCelsius(temp);
-
   if (loading) return <Loader />;
   return (
     <div className={style.currentWeather}>
@@ -55,19 +52,8 @@ const CurrentWeather: React.FC<Props> = (props) => {
           alt="current weather icon"
         />
       </div>
-
-      <div className="fahrenheit-temp">
-        <p className={style.fahrenheitDeg}>
-          {fTemp}
-          <span className={style.degType}>Fahrenheit</span>
-        </p>
-      </div>
-      <div className="celsius-temp">
-        <p className={style.celsiusDeg}>
-          {cTemp}
-          <span className={style.degType}>Celsius</span>
-        </p>
-      </div>
+      <Temperature units="imperial" temp={temp} />
+      <Temperature units="metric" temp={temp} />
     </div>
   );
 };
