@@ -1,8 +1,0 @@
-.weatherIcon {
-  width: calc(30px + 25vh);
-}
-
-.weatherIconInvert {
-  composes: weatherIcon;
-  filter: invert(0.4) sepia(1) saturate(3.1) hue-rotate(3.6deg) brightness(1.04);
-}

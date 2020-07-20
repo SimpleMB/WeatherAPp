@@ -8,7 +8,6 @@ import { RootState } from '../store';
 import { rngLocation } from '../utils/randomCities';
 import Loader from './Loader';
 import Temperature from './Temperature';
-import WeatherIcon from './WeatherIcon';
 
 interface Props {
   weather: Weather;
@@ -32,7 +31,7 @@ const CurrentWeather: React.FC<Props> = (props) => {
   const [city, setCity] = useState('New York');
 
   useEffect(() => {
-    if (location.lat === 0) {
+    if (!localStorage.location) {
       const randomCoords = rngLocation();
       getWeatherAction(randomCoords);
       setCity(randomCoords.city);
@@ -47,10 +46,10 @@ const CurrentWeather: React.FC<Props> = (props) => {
       <h2 className={style.header}>Current</h2>
       <div className={style.cityWeather}>
         <h3 className={style.city}>{location.city || city}</h3>
-        <WeatherIcon
+        <img
+          className={style.weatherIcon}
           src={String(currentWeatherIcon)}
           alt="current weather icon"
-          invert
         />
       </div>
       <Temperature units="imperial" temp={temp} />

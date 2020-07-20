@@ -13,7 +13,7 @@ const randomLocation: Location[] = [
   },
   {
     lat: 40.71,
-    lon: 74.01,
+    lon: -74.01,
     city: 'New York',
   },
   {
