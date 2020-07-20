@@ -1,3 +1,4 @@
 .weatherTemplate {
   composes: locationTemplate from './LocationTemplate.module.scss';
+  position: relative;
 }

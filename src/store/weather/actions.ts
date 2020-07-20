@@ -26,5 +26,6 @@ export const getWeather = (
     });
   } catch (error) {
     console.log(error);
+    // TODO: Error state
   }
 };
