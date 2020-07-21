@@ -8,12 +8,12 @@ import style from './WeatherTemplate.module.scss';
 interface WeatherTemplateProps {}
 const WeatherTemplate: React.FC<WeatherTemplateProps> = (props) => {
   return (
-    <div className={style.weatherTemplate}>
+    <main className={style.weatherTemplate}>
       <CurrentWeather />
       <Forcast />
       <ChangeLocationButton />
       <Alert />
-    </div>
+    </main>
   );
 };
 

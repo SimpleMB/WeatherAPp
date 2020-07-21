@@ -13,8 +13,9 @@ interface Props {
 
 const App: React.FC<Props> = (props) => {
   useEffect(() => {
-    if (localStorage.location)
+    if (localStorage.location) {
       props.setLocation(JSON.parse(localStorage.location));
+    }
     // eslint-disable-next-line
   }, []);
 
@@ -25,4 +26,5 @@ const mapStateToProps = (state: RootState) => ({
   location: state.location,
 });
 
+// export const AppTest = App;
 export default connect(mapStateToProps, { setLocation })(App);

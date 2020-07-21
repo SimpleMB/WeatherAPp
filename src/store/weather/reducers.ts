@@ -7,7 +7,7 @@ import {
   CLEAR_WEATHER_ERROR,
 } from './types';
 
-const initialState: Weather = {
+export const initialWeatherState: Weather = {
   loading: true,
   error: '',
   timezone_offset: 0,
@@ -45,7 +45,7 @@ const initialState: Weather = {
   ],
 };
 
-export default (state = initialState, action: WeatherActionsType) => {
+export default (state = initialWeatherState, action: WeatherActionsType) => {
   switch (action.type) {
     case GET_WEATHER:
       return {

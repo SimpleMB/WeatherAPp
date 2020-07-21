@@ -7,14 +7,14 @@ import {
   CLEAR_LOCATION_ERROR,
 } from './types';
 
-const initialState: Location = {
+export const initialLocationState: Location = {
   lat: 0,
   lon: 0,
   city: '',
   error: '',
 };
 
-export default (state = initialState, action: LocationActionsType) => {
+export default (state = initialLocationState, action: LocationActionsType) => {
   switch (action.type) {
     case SET_LOCATION:
       localStorage.setItem('location', JSON.stringify(action.payload));
@@ -22,7 +22,7 @@ export default (state = initialState, action: LocationActionsType) => {
 
     case CLEAR_LOCATION:
       localStorage.removeItem('location');
-      return initialState;
+      return initialLocationState;
 
     case SET_LOCATION_ERROR:
       return {
