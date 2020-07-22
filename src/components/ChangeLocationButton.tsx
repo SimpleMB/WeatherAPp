@@ -11,7 +11,7 @@ const ChangeLocationButton: React.FC<ChangeLocationButtonProps> = (props) => {
   return (
     <button
       type="button"
-      className={style.button}
+      className={style.changeLocationBtn}
       onClick={props.clearLocation}
     >
       Change Location

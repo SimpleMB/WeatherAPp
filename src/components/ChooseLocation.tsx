@@ -39,7 +39,7 @@ const ChooseLocation: React.FC<LocationTemplateProps> = (props) => {
   };
 
   return (
-    <div className={style.chooseLocation}>
+    <section className={style.chooseLocation}>
       <h1 className={style.title}>
         When the bloody hell is it going to stop raining...{' '}
         <span className={style.titleSpan}>app</span>
@@ -59,7 +59,7 @@ const ChooseLocation: React.FC<LocationTemplateProps> = (props) => {
           loader={<div />}
         />
       </div>
-    </div>
+    </section>
   );
 };
 

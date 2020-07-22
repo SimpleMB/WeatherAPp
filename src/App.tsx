@@ -26,5 +26,4 @@ const mapStateToProps = (state: RootState) => ({
   location: state.location,
 });
 
-// export const AppTest = App;
 export default connect(mapStateToProps, { setLocation })(App);

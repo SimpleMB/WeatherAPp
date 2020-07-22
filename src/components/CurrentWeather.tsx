@@ -42,7 +42,7 @@ const CurrentWeather: React.FC<Props> = (props) => {
 
   if (loading) return <Loader />;
   return (
-    <div className={style.currentWeather}>
+    <section className={style.currentWeather}>
       <h2 className={style.header}>Current</h2>
       <div className={style.cityWeather}>
         <h3 className={style.city}>{location.city || city}</h3>
@@ -54,7 +54,7 @@ const CurrentWeather: React.FC<Props> = (props) => {
       </div>
       <Temperature units="imperial" temp={temp} />
       <Temperature units="metric" temp={temp} />
-    </div>
+    </section>
   );
 };
 
