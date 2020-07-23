@@ -20,10 +20,10 @@ const Forcast: React.FC<Props> = (props) => {
   ));
   if (loading) return <Loader />;
   return (
-    <div className={style.forcast}>
+    <section className={style.forcast}>
       <h2 className={style.header}>Forcast</h2>
       <ul className={style.forcastUL}>{forcastDayList}</ul>
-    </div>
+    </section>
   );
 };
 

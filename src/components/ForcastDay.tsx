@@ -71,6 +71,7 @@ const ForcastDay: React.FC<ForcastDayProps> = (props) => {
         <img
           className={style.weatherIcon}
           src={String(dynamicIcon)}
+          data-testid={id}
           alt="weather icon"
         />
       </div>
