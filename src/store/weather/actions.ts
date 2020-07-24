@@ -1,5 +1,5 @@
 import { Action } from 'redux';
-import { ThunkAction, ThunkDispatch } from 'redux-thunk';
+import { ThunkAction } from 'redux-thunk';
 import {
   Coords,
   GET_WEATHER,
@@ -8,37 +8,24 @@ import {
   CLEAR_WEATHER_ERROR,
 } from './types';
 
-const setLoading = (dispatch: ThunkDispatch<{}, unknown, Action<string>>) => {
-  dispatch({
-    type: LOADING,
-    payload: true,
-  });
-};
+export const setLoading = () => ({
+  type: LOADING,
+});
 
-const clearError = (dispatch: ThunkDispatch<{}, unknown, Action<string>>) => {
-  setTimeout(() => {
-    dispatch({
-      type: CLEAR_WEATHER_ERROR,
-    });
-  }, 3000);
-};
+export const clearError = () => ({
+  type: CLEAR_WEATHER_ERROR,
+});
 
-const setError = (
-  error: string,
-  dispatch: ThunkDispatch<{}, unknown, Action<string>>
-) => {
-  dispatch({
-    type: SET_WEATHER_ERROR,
-    payload: error,
-  });
-  clearError(dispatch);
-};
+export const setError = (error: string) => ({
+  type: SET_WEATHER_ERROR,
+  payload: error,
+});
 
 export const getWeather = (
   coords: Coords
 ): ThunkAction<void, {}, unknown, Action<string>> => async (dispatch) => {
   if (coords.lat === 0) return;
-  setLoading(dispatch);
+  dispatch(setLoading());
   const { lat, lon } = coords;
   try {
     const weatherResponse = await fetch(
@@ -52,6 +39,7 @@ export const getWeather = (
       payload: weatherData,
     });
   } catch (err) {
-    setError(err.message, dispatch);
+    dispatch(setError(err.message));
+    setTimeout(() => dispatch(clearError()), 5000);
   }
 };
