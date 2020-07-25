@@ -6,8 +6,15 @@ import thunk from 'redux-thunk';
 import App from './App';
 import { initialWeatherState } from './store/weather/reducers';
 import { initialLocationState } from './store/location/reducers';
+import { SET_LOCATION } from './store/location/types';
 
 const mockStore = configureStore([thunk]);
+
+const mockLocation = {
+  lat: 23,
+  lon: 23,
+  city: 'Somewhere',
+};
 
 describe('testing App component', () => {
   test('renders App component', () => {
@@ -20,6 +27,24 @@ describe('testing App component', () => {
         <App />
       </Provider>
     );
+  });
+
+  test('after mount dispatches action setLocation if localStorege provided', () => {
+    localStorage.setItem('location', JSON.stringify(mockLocation));
+
+    const store = mockStore({
+      location: { ...initialLocationState },
+      weather: { ...initialWeatherState },
+    });
+    render(
+      <Provider store={store}>
+        <App />
+      </Provider>
+    );
+
+    const actions = store.getActions();
+    const expectedPayload = [{ type: SET_LOCATION, payload: mockLocation }];
+    expect(actions).toEqual(expectedPayload);
   });
 
   test('renders LocationTemplate if state initial', () => {

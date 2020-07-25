@@ -9,7 +9,6 @@ export const initialLocationState: Location = {
   lat: 0,
   lon: 0,
   city: '',
-  error: '',
 };
 
 export default (state = initialLocationState, action: LocationActionsType) => {

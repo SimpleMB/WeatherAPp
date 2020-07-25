@@ -8,7 +8,6 @@ const mockLocation = {
   lat: 23,
   lon: 23,
   city: 'Somewhere',
-  error: '',
 };
 
 describe('Testing Redux store location actions', () => {
