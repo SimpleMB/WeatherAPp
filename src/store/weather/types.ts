@@ -50,7 +50,6 @@ export interface GetWeatherAction {
 
 export interface SetLoadingAction {
   type: typeof LOADING;
-  payload: boolean;
 }
 
 interface SetErrorAction {
