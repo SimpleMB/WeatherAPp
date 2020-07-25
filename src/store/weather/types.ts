@@ -1,7 +1,7 @@
 export const GET_WEATHER = 'GET_WEATHER';
 export const LOADING = 'LOADING';
-export const SET_WEATHER_ERROR = 'SET_ERROR';
-export const CLEAR_WEATHER_ERROR = 'CLEAR_ERROR';
+export const SET_WEATHER_ERROR = 'SET_WEATHER_ERROR';
+export const CLEAR_WEATHER_ERROR = 'CLEAR_WEATHER_ERROR';
 
 interface WeatherShort {
   id: number;

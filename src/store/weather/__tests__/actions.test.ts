@@ -27,6 +27,9 @@ const mockLocation = {
 
 const mockError = 'Sample error';
 
+// this is for setTimeout dispatch in getWeather
+jest.useFakeTimers();
+
 describe('Testing Redux store weather actions', () => {
   const initialState = {};
   const store = mockStore(initialState);
@@ -71,7 +74,28 @@ describe('Testing Redux store weather actions', () => {
       { type: GET_WEATHER, payload: mockWeather },
     ];
     expect(actions).toEqual(expectedPayload);
+    fetchMock.restore();
   });
 
-  // TODO: test error when fetching
+  test('when API error getWeather should dispatch - loading action, error action then clear error action', async () => {
+    fetchMock.getOnce(
+      `https://api.openweathermap.org/data/2.5/onecall?lat=${mockLocation.lat}&lon=${mockLocation.lon}&exclude=minutely,hourly&appid=${process.env.REACT_APP_WEATHER_API_KEY}`,
+      400
+    );
+
+    // await for all actions to dispatch
+    await store.dispatch(getWeather(mockLocation));
+
+    // runs all timed-out actions
+    jest.runAllTimers();
+
+    const actions = store.getActions();
+    const expectedPayload = [
+      { type: LOADING },
+      { type: SET_WEATHER_ERROR, payload: 'Something went wrong with API...' },
+      { type: CLEAR_WEATHER_ERROR },
+    ];
+    expect(actions).toEqual(expectedPayload);
+    fetchMock.restore();
+  });
 });

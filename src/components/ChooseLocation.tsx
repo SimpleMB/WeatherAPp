@@ -17,6 +17,7 @@ const ChooseLocation: React.FC<LocationTemplateProps> = (props) => {
     place_id: string;
     description: string;
   };
+
   const changeLocation = async (result: Result) => {
     const location = await geocodeByPlaceId(result.place_id);
     const { lat, lng } = await getLatLng(location[0]);
