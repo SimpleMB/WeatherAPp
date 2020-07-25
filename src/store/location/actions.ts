@@ -1,4 +1,3 @@
-import { Dispatch } from 'redux';
 import { SET_LOCATION, CLEAR_LOCATION, Location } from './types';
 
 export const setLocation = (location: Location) => ({
